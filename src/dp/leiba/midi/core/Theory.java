@@ -40,15 +40,15 @@ public class Theory
             note,
             note + INTERVAL_SECOND,
             note + INTERVAL_THIRD,
-            note + INTERVAL_THIRD,
             note + INTERVAL_FORTH,
             note + INTERVAL_FIFTH,
             note + INTERVAL_SIXTH,
+            note + INTERVAL_SEVENTH,
         };
 
         if (!isMajor) {
             for (int i : new int[] {2, 5, 6}) {
-                harmony[i] -= INTERVAL_SMALL;
+                harmony[i] += INTERVAL_SMALL;
             }
         }
 
