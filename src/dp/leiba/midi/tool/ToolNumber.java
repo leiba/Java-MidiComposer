@@ -1,7 +1,5 @@
 package dp.leiba.midi.tool;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 /**
  * ToolNumber.
  */
@@ -18,7 +16,7 @@ public class ToolNumber
      */
     public static int getRandom(int min, int max)
     {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
+        return min + (int)(Math.random() * ((max - min) + 1));
     }
 
     /**

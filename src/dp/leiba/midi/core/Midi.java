@@ -38,7 +38,7 @@ public class Midi
         throws Exception
     {
         _file     = file;
-        _sequence = new Sequence(javax.sound.midi.Sequence.PPQ, 24);
+        _sequence = new Sequence(javax.sound.midi.Sequence.PPQ, SIZE_BEAT);
         _track    = _sequence.createTrack();
     }
 
