@@ -8,6 +8,14 @@ import java.io.File;
  */
 public class Midi
 {
+
+    /**
+     * Sizes.
+     */
+    public static final int SIZE_CELL = 1;
+    public static final int SIZE_BEAT = SIZE_CELL * 6;
+    public static final int SIZE_TACT = SIZE_BEAT * 4;
+
     /**
      * Sequence.
      */
@@ -28,9 +36,18 @@ public class Midi
         _track    = _sequence.createTrack();
     }
 
-    public void play(int note, int start, int length)
+    /**
+     * Play.
+     *
+     * @param note   Note.
+     * @param start  Start.
+     * @param length Length.
+     */
+    public void play(int note, long start, long length)
+        throws Exception
     {
-
+        _setMessage(0x90, note, 0x60, start);
+        _setMessage(0x80, note, 0x40, start + length);
     }
 
     /**
@@ -78,5 +95,4 @@ public class Midi
         message.setMessage(type, data, length);
         _track.add(new MidiEvent(message, tick));
     }
-
 }
