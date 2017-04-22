@@ -1,5 +1,7 @@
 package dp.leiba.midi.core;
 
+import dp.leiba.midi.tool.ToolNumber;
+
 /**
  * Melody.
  */
@@ -22,6 +24,11 @@ public class Melody
     private boolean _isMajor;
 
     /**
+     * Is triplet.
+     */
+    private boolean _isTriplet;
+
+    /**
      * Harmony.
      */
     private int[] _harmony;
@@ -39,10 +46,13 @@ public class Melody
     public Melody(String file)
         throws Exception
     {
-        _midi    = new Midi(file);
-        _tone    = Theory.getTone();
-        _isMajor = Theory.getIsMajor();
-        _harmony = Theory.getHarmony(_tone, _isMajor);
-        _chords  = Theory.getHarmonyChord(_isMajor);
+        _midi      = new Midi(file);
+        _tone      = Theory.getTone();
+        _isMajor   = Theory.getIsMajor();
+        _isTriplet = Theory.getIsTriplet();
+        _harmony   = Theory.getHarmony(_tone, _isMajor);
+        _chords    = Theory.getHarmonyChord(_isMajor);
     }
+
+
 }
