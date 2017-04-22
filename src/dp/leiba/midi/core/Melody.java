@@ -53,8 +53,8 @@ public class Melody
         _harmony   = Theory.getHarmony(_tone, _isMajor);
         _chords    = Theory.getHarmonyChord(_isMajor);
 
-        int[][] chords = TheoryGen.getChords(_tone, _isMajor, 4, _harmony, _chords);
-        int[] lead = TheoryGen.getLead(chords, _harmony, 32);
+        int[][] chords = TheoryGen.getChords(_tone, _isMajor, 4 * 20, _harmony, _chords);
+        int[] lead = TheoryGen.getLead(chords, _harmony, 32 * 20);
         int[] bass = TheoryGen.getBass(chords);
 
         for (int i = 0; i < chords.length; i++) {
