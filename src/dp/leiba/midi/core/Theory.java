@@ -1,5 +1,7 @@
 package dp.leiba.midi.core;
 
+import dp.leiba.midi.tool.ToolNumber;
+
 /**
  * Music theory.
  */
@@ -28,22 +30,45 @@ public class Theory
     public static final int CHORD_MAJOR         = 2;
 
     /**
+     * Get tone.
+     *
+     * @return Tone.
+     */
+    public static int getTone()
+    {
+        int min = 5 * TONES;
+        int max = 6 * TONES - 1;
+
+        return ToolNumber.getRandom(min, max);
+    }
+
+    /**
+     * Get is major.
+     *
+     * @return Is major.
+     */
+    public static boolean getIsMajor()
+    {
+        return ToolNumber.getIs();
+    }
+
+    /**
      * Get harmony for tone.
      *
-     * @param note Note.
+     * @param tone Tone.
      *
      * @return Harmony.
      */
-    public static int[] getHarmony(int note, boolean isMajor)
+    public static int[] getHarmony(int tone, boolean isMajor)
     {
         int[] harmony = new int[] {
-            note,
-            note + INTERVAL_SECOND,
-            note + INTERVAL_THIRD,
-            note + INTERVAL_FORTH,
-            note + INTERVAL_FIFTH,
-            note + INTERVAL_SIXTH,
-            note + INTERVAL_SEVENTH,
+            tone,
+            tone + INTERVAL_SECOND,
+            tone + INTERVAL_THIRD,
+            tone + INTERVAL_FORTH,
+            tone + INTERVAL_FIFTH,
+            tone + INTERVAL_SIXTH,
+            tone + INTERVAL_SEVENTH,
         };
 
         if (!isMajor) {
@@ -94,19 +119,19 @@ public class Theory
     /**
      * Get chord.
      *
-     * @param note    Note.
+     * @param tone    Tone.
      * @param isMajor Is major.
      *
      * @return Chord.
      */
-    public static int[] getChord(int note, boolean isMajor)
+    public static int[] getChord(int tone, boolean isMajor)
     {
         int interval = isMajor ? INTERVAL_BIG : INTERVAL_SMALL;
 
         return new int[]{
-            note,
-            note + INTERVAL_THIRD + interval,
-            note + INTERVAL_FIFTH
+            tone,
+            tone + INTERVAL_THIRD + interval,
+            tone + INTERVAL_FIFTH
         };
     }
 }

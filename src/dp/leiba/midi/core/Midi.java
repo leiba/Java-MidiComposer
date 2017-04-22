@@ -17,6 +17,11 @@ public class Midi
     public static final int SIZE_TACT = SIZE_BEAT * 4;
 
     /**
+     * File.
+     */
+    private String _file;
+
+    /**
      * Sequence.
      */
     private Sequence _sequence;
@@ -29,9 +34,10 @@ public class Midi
     /**
      * Constructor.
      */
-    public Midi()
+    public Midi(String file)
         throws Exception
     {
+        _file     = file;
         _sequence = new Sequence(javax.sound.midi.Sequence.PPQ, 24);
         _track    = _sequence.createTrack();
     }
@@ -52,13 +58,11 @@ public class Midi
 
     /**
      * Save.
-     *
-     * @param file File.
      */
-    public void save(String file)
+    public void save()
         throws Exception
     {
-        MidiSystem.write(_sequence, 1, new File(file));
+        MidiSystem.write(_sequence, 1, new File(_file));
     }
 
     /**
