@@ -2,8 +2,6 @@ package dp.leiba.midi.core;
 
 import dp.leiba.midi.tool.ToolNumber;
 
-import java.util.Arrays;
-
 /**
  * Melody.
  */
@@ -55,11 +53,27 @@ public class Melody
         _harmony   = Theory.getHarmony(_tone, _isMajor);
         _chords    = Theory.getHarmonyChord(_isMajor);
 
-        int[][] chords = getChords();
+        int[][] chords = TheoryGen.getChords(_tone, _isMajor, 4, _harmony, _chords);
+        int[] lead = TheoryGen.getLead(chords, _harmony, 32);
+        int[] bass = TheoryGen.getBass(chords);
 
         for (int i = 0; i < chords.length; i++) {
             for (int j = 0; j < chords[i].length; j++) {
-                _midi.play(chords[i][j], Midi.SIZE_BEAT * i, Midi.SIZE_BEAT);
+                _midi.play(chords[i][j], Midi.SIZE_TACT * i, Midi.SIZE_TACT);
+            }
+        }
+
+        for (int i = 0; i < bass.length; i++) {
+            _midi.play(bass[i], Midi.SIZE_TACT * i + (Midi.SIZE_BEAT * 0), Midi.SIZE_BEAT);
+            if (ToolNumber.getIs()) _midi.play(bass[i], Midi.SIZE_TACT * i + (Midi.SIZE_BEAT * 1), Midi.SIZE_BEAT);
+            if (ToolNumber.getIs()) _midi.play(bass[i], Midi.SIZE_TACT * i + (Midi.SIZE_BEAT * 2), Midi.SIZE_BEAT);
+            if (ToolNumber.getIs()) _midi.play(bass[i], Midi.SIZE_TACT * i + (Midi.SIZE_BEAT * 3), Midi.SIZE_BEAT);
+        }
+
+        for (int i = 0; i < lead.length; i++) {
+            if (lead[i] != TheoryGen.NOP) {
+                //System.out.println(lead[i]);
+                _midi.play(lead[i], Midi.SIZE_BEAT / 2 * i, Midi.SIZE_CELL * 3);
             }
         }
 
@@ -68,29 +82,6 @@ public class Melody
 
     private void getBass()
     {
-
-    }
-
-    /**
-     * Get chords.
-     *
-     * @return Chords.
-     */
-    private int[][] getChords()
-    {
-        int i = 0, note;
-        int[][] chords = new int[4][3];
-        chords[i++] = Theory.getChord(_tone, _isMajor);
-
-        while (i < chords.length) {
-            note = ToolNumber.getRandom(0, _harmony.length - 1);
-
-            if (_chords[note] != Theory.CHORD_NOP) {
-                chords[i++] = Theory.getChord(_harmony[note], _chords[note] == Theory.CHORD_MAJOR);
-            }
-        }
-
-        return chords;
 
     }
 

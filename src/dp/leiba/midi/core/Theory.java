@@ -129,6 +129,27 @@ public class Theory
     /**
      * Get chord.
      *
+     * @param tone Tone.
+     * @param type Type.
+     *
+     * @return Chord.
+     */
+    public static int[] getChord(int tone, int type)
+    {
+        int[] chord = null;
+
+        if (type == CHORD_MAJOR) {
+            chord = getChord(tone, true);
+        } else if (type == CHORD_MINOR) {
+            chord = getChord(tone, false);
+        }
+
+        return chord;
+    }
+
+    /**
+     * Get chord.
+     *
      * @param tone    Tone.
      * @param isMajor Is major.
      *

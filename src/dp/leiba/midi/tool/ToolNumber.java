@@ -9,6 +9,18 @@ public class ToolNumber
     /**
      * Get random.
      *
+     * @param max Max.
+     *
+     * @return Random.
+     */
+    public static int getRandom(int max)
+    {
+        return getRandom(0, max);
+    }
+
+    /**
+     * Get random.
+     *
      * @param min Min.
      * @param max Max.
      *
