@@ -25,11 +25,6 @@ public class Melody
     private boolean _isMajor;
 
     /**
-     * Is triplet.
-     */
-    private boolean _isTriplet;
-
-    /**
      * Harmony.
      */
     private int[] _harmony;
@@ -50,7 +45,6 @@ public class Melody
         _midi      = new Midi(file);
         _tone      = Theory.getTone();
         _isMajor   = Theory.getIsMajor();
-        _isTriplet = Theory.getIsTriplet();
         _harmony   = Theory.getHarmony(_tone, _isMajor);
         _chords    = Theory.getHarmonyChord(_isMajor);
 

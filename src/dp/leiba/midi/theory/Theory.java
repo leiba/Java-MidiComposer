@@ -53,16 +53,6 @@ public class Theory
     }
 
     /**
-     * Get is triplet.
-     *
-     * @return Is triplet.
-     */
-    public static boolean getIsTriplet()
-    {
-        return ToolNumber.getIs();
-    }
-
-    /**
      * Get accents.
      *
      * @param tone    Tone.

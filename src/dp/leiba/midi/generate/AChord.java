@@ -1,7 +1,7 @@
 package dp.leiba.midi.generate;
 
-import dp.leiba.midi.theory.Theory;
-import dp.leiba.midi.tool.ToolNumber;
+import dp.leiba.midi.generate.tick.TickChord;
+import dp.leiba.midi.theory.Accent;
 
 /**
  * AChord.
@@ -10,35 +10,30 @@ abstract public class AChord
 {
 
     /**
-     * Tone.
+     * Chords.
      */
-    protected int _tone;
+    protected TickChord[] _chords;
 
     /**
-     * Is major.
+     * Constructor.
+     *
+     * @param tone    Tone.
+     * @param isMajor Is major.
+     * @param accents Accents.
+     * @param size    Size.
      */
-    protected boolean _isMajor;
-
-    /**
-     * Harmony.
-     */
-    protected int[] _harmony;
-
-    /**
-     * Size.
-     */
-    protected int _size;
-
-    public AChord(int tone, boolean isMajor, int[] harmony, int size)
+    public AChord(int tone, boolean isMajor, Accent[] accents, int size)
     {
-        _tone    = tone;
-        _isMajor = isMajor;
-        _harmony = harmony;
-        _size    = size;
+        _chords  = new TickChord[size];
     }
 
-
-
-
-
+    /**
+     * Get chords.
+     *
+     * @return Chords.
+     */
+    public TickChord[] get()
+    {
+        return _chords;
+    }
 }
