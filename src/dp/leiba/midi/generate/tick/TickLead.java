@@ -3,9 +3,9 @@ package dp.leiba.midi.generate.tick;
 import dp.leiba.midi.theory.Theory;
 
 /**
- * TickBass.
+ * TickLead.
  */
-public class TickBass
+public class TickLead
 {
 
     /**
@@ -30,9 +30,9 @@ public class TickBass
      * @param position Position.
      * @param ticks    Ticks.
      */
-    public TickBass(int tone, int position, int ticks)
+    public TickLead(int tone, int position, int ticks)
     {
-        this.tone     = tone - Theory.TONES;
+        this.tone     = tone + Theory.TONES * 2;
         this.position = position;
         this.ticks    = ticks;
     }
@@ -44,10 +44,10 @@ public class TickBass
      * @param position Position.
      * @param ticks    Ticks.
      *
-     * @return TickBass.
+     * @return TickLead.
      */
-    public static TickBass get(int tone, int position, int ticks)
+    public static TickLead get(int tone, int position, int ticks)
     {
-        return new TickBass(tone, position, ticks);
+        return new TickLead(tone, position, ticks);
     }
 }
