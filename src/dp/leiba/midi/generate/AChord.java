@@ -37,7 +37,7 @@ abstract public class AChord
         _size    = size;
     }
 
-    
+
 
 
 

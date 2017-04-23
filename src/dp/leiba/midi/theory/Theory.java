@@ -76,8 +76,7 @@ public class Theory
         int[] chord;
         int i = 0;
         Accent[] accents = new Accent[size];
-
-        accents[i] = Accent.get(tone, isMajor);
+        accents[i]       = Accent.get(tone, isMajor);
 
         while (++i < size) {
             chord      = getChordRandom(tone, isMajor);
@@ -208,7 +207,7 @@ public class Theory
 
         while (chord == null) {
             interval = ToolNumber.getRandom(harmony.length - 1);
-            chord    = Theory.getChord(harmony[interval], chords[interval]);
+            chord    = getChord(harmony[interval], chords[interval]);
         }
 
         return chord;
