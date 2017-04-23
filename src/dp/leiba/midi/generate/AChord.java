@@ -3,6 +3,8 @@ package dp.leiba.midi.generate;
 import dp.leiba.midi.generate.tick.TickChord;
 import dp.leiba.midi.theory.Accent;
 
+import java.util.ArrayList;
+
 /**
  * AChord.
  */
@@ -12,7 +14,7 @@ abstract public class AChord
     /**
      * Chords.
      */
-    protected TickChord[] _chords;
+    protected ArrayList<TickChord> _chords;
 
     /**
      * Constructor.
@@ -24,7 +26,7 @@ abstract public class AChord
      */
     public AChord(int tone, boolean isMajor, Accent[] accents, int size)
     {
-        _chords  = new TickChord[size];
+        _chords  = new ArrayList<>();
     }
 
     /**
@@ -32,7 +34,7 @@ abstract public class AChord
      *
      * @return Chords.
      */
-    public TickChord[] get()
+    public ArrayList<TickChord> get()
     {
         return _chords;
     }

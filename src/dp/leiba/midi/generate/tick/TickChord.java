@@ -7,9 +7,14 @@ public class TickChord
 {
 
     /**
-     * Chord.
+     * Tones.
      */
-    public int[] chord;
+    public int[] tones;
+
+    /**
+     * Position.
+     */
+    public int position;
 
     /**
      * Ticks.
@@ -19,26 +24,29 @@ public class TickChord
     /**
      * Constructor.
      *
-     * @param chord Chord.
-     * @param ticks Ticks.
+     * @param tones    Tones.
+     * @param position Position.
+     * @param ticks    Ticks.
      */
-    public TickChord(int[] chord, int ticks)
+    public TickChord(int[] tones, int position, int ticks)
     {
-        this.chord = chord;
-        this.ticks = ticks;
+        this.tones    = tones;
+        this.position = position;
+        this.ticks    = ticks;
     }
 
     /**
      * Get object.
      *
-     * @param chord Chord.
-     * @param ticks Ticks.
+     * @param tones    Tones.
+     * @param position Position.
+     * @param ticks    Ticks.
      *
      * @return TickChord.
      */
-    public static TickChord get(int[] chord, int ticks)
+    public static TickChord get(int[] tones, int position, int ticks)
     {
-        return new TickChord(chord, ticks);
+        return new TickChord(tones, position, ticks);
     }
 
 }

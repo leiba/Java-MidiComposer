@@ -1,7 +1,12 @@
 package dp.leiba.midi.core;
 
+import dp.leiba.midi.generate.chord.ChordBeat;
+import dp.leiba.midi.generate.tick.TickChord;
+import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.theory.Theory;
 import dp.leiba.midi.tool.ToolNumber;
+
+import java.util.ArrayList;
 
 /**
  * Melody.
@@ -45,6 +50,23 @@ public class Melody
         _midi      = new Midi(file);
         _tone      = Theory.getTone();
         _isMajor   = Theory.getIsMajor();
+
+        int size = Midi.SIZE_TACT * 4;
+        int accts = 8;
+        Accent[] accents = Theory.getAccents(_tone, _isMajor, accts);
+        ArrayList<TickChord> chords = new ChordBeat(_tone, _isMajor, accents, size).get();
+        System.out.println(accents.length);
+
+        for (TickChord chord : chords) {
+            for (int tone : chord.tones) {
+                _midi.play(tone, chord.position, chord.ticks);
+            }
+        }
+
+        //_midi.play(55, 0, Midi.SIZE_BEAT);
+
+        /*
+
         _harmony   = Theory.getHarmony(_tone, _isMajor);
         _chords    = Theory.getHarmonyChord(_isMajor);
 
@@ -71,7 +93,7 @@ public class Melody
                 _midi.play(lead[i], Midi.SIZE_BEAT / 2 * i, Midi.SIZE_CELL * 3);
             }
         }
-
+*/
         _midi.save();
     }
 

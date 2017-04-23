@@ -57,18 +57,18 @@ public class Theory
      *
      * @param tone    Tone.
      * @param isMajor Is major.
-     * @param size    Size.
+     * @param count   Count.
      *
      * @return Accents.
      */
-    public static Accent[] getAccents(int tone, boolean isMajor, int size)
+    public static Accent[] getAccents(int tone, boolean isMajor, int count)
     {
         int[] chord;
         int i = 0;
-        Accent[] accents = new Accent[size];
+        Accent[] accents = new Accent[count];
         accents[i]       = Accent.get(tone, isMajor);
 
-        while (++i < size) {
+        while (++i < count) {
             chord      = getChordRandom(tone, isMajor);
             accents[i] = Accent.get(chord[0], (chord[1] - chord[0]) == INTERVAL_THIRD);
         }
