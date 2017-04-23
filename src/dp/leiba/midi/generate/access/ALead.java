@@ -1,20 +1,21 @@
-package dp.leiba.midi.generate;
+package dp.leiba.midi.generate.access;
 
-import dp.leiba.midi.generate.tick.TickBass;
+import dp.leiba.midi.generate.position.APosition;
+import dp.leiba.midi.generate.tick.TickLead;
 import dp.leiba.midi.theory.Accent;
 
 import java.util.ArrayList;
 
 /**
- * ABass.
+ * ALead.
  */
-abstract public class ABass
+abstract public class ALead extends APosition
 {
 
     /**
      * Tones.
      */
-    protected ArrayList<TickBass> _tones;
+    protected ArrayList<TickLead> _tones;
 
     /**
      * Constructor.
@@ -24,7 +25,7 @@ abstract public class ABass
      * @param accents Accents.
      * @param size    Size.
      */
-    public ABass(int tone, boolean isMajor, Accent[] accents, int size)
+    public ALead(int tone, boolean isMajor, Accent[] accents, int size)
     {
         _tones  = new ArrayList<>();
     }
@@ -34,7 +35,7 @@ abstract public class ABass
      *
      * @return Tones.
      */
-    public ArrayList<TickBass> get()
+    public ArrayList<TickLead> get()
     {
         return _tones;
     }

@@ -1,6 +1,6 @@
 package dp.leiba.midi.generate.chord;
 
-import dp.leiba.midi.generate.AChord;
+import dp.leiba.midi.generate.access.AChord;
 import dp.leiba.midi.generate.tick.TickChord;
 import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.theory.Theory;

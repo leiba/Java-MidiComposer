@@ -1,6 +1,6 @@
 package dp.leiba.midi.generate.bass;
 
-import dp.leiba.midi.generate.ABass;
+import dp.leiba.midi.generate.access.ABass;
 import dp.leiba.midi.generate.tick.TickBass;
 import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.tool.ToolNumber;

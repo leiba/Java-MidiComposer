@@ -1,5 +1,6 @@
-package dp.leiba.midi.generate;
+package dp.leiba.midi.generate.access;
 
+import dp.leiba.midi.generate.position.APosition;
 import dp.leiba.midi.generate.tick.TickChord;
 import dp.leiba.midi.theory.Accent;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 /**
  * AChord.
  */
-abstract public class AChord
+abstract public class AChord extends APosition
 {
 
     /**
