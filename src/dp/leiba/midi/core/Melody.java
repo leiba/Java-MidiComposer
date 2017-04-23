@@ -5,8 +5,10 @@ import dp.leiba.midi.generate.chord.ChordAccent;
 import dp.leiba.midi.generate.chord.ChordBeat;
 import dp.leiba.midi.generate.chord.ChordPass;
 import dp.leiba.midi.generate.chord.ChordSyncope;
+import dp.leiba.midi.generate.lead.LeadLine;
 import dp.leiba.midi.generate.tick.TickBass;
 import dp.leiba.midi.generate.tick.TickChord;
+import dp.leiba.midi.generate.tick.TickLead;
 import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.theory.Theory;
 import dp.leiba.midi.tool.ToolNumber;
@@ -61,15 +63,20 @@ public class Melody
         Accent[] accents = Theory.getAccents(_tone, _isMajor, accts);
         ArrayList<TickChord> chords = new ChordSyncope(_tone, _isMajor, accents, size).get();
         ArrayList<TickBass> bass = new BassBeat(_tone, _isMajor, accents, size).get();
+        ArrayList<TickLead> leads = new LeadLine(_tone, _isMajor, accents, size).get();
 
         for (TickChord chord : chords) {
             for (int tone : chord.tones) {
-                _midi.play(tone, chord.position, chord.ticks);
+                //_midi.play(tone, chord.position, chord.ticks);
             }
         }
 
         for (TickBass bs : bass) {
-            _midi.play(bs.tone, bs.position, bs.ticks);
+            //_midi.play(bs.tone, bs.position, bs.ticks);
+        }
+
+        for (TickLead lead : leads) {
+            _midi.play(lead.tone, lead.position, lead.ticks);
         }
 
         //_midi.play(55, 0, Midi.SIZE_BEAT);
