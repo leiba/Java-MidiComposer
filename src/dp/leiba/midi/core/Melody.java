@@ -51,7 +51,7 @@ public class Melody
         _tone      = Theory.getTone();
         _isMajor   = Theory.getIsMajor();
 
-        int size = Midi.SIZE_TACT * 4;
+        int size = Midi.SIZE_TACT;
         int accts = 8;
         Accent[] accents = Theory.getAccents(_tone, _isMajor, accts);
         ArrayList<TickChord> chords = new ChordBeat(_tone, _isMajor, accents, size).get();

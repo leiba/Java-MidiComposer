@@ -29,11 +29,11 @@ public class ChordAccent extends AChord
 
         for (int i = 0; i < accents.length; i++) {
             chord = Theory.getChord(accents[i].tone, accents[i].isMajor);
-            _chords.add(TickChord.get(chord, (i++) * step, shift));
+            _chords.add(TickChord.get(chord, i * step, shift));
 
             if (ToolNumber.getIs()) {
                 chord = Theory.getChordRandom(tone, isMajor);
-                _chords.add(TickChord.get(chord, i * step - shift, shift));
+                _chords.add(TickChord.get(chord, i * step + shift, shift));
             }
         }
     }

@@ -28,7 +28,7 @@ public class ChordBeat extends AChord
 
         for (int i = 0; i < accents.length; i++) {
             chord = Theory.getChord(accents[i].tone, accents[i].isMajor);
-            _chords.add(TickChord.get(chord, (i++) * step, step));
+            _chords.add(TickChord.get(chord, i * step, step));
         }
     }
 }
