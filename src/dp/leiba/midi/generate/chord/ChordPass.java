@@ -27,7 +27,7 @@ public class ChordPass extends AChord
         int step = size / accents.length;
 
         for (int i = 0; i < accents.length; i++) {
-            if (ToolNumber.getIs()) {
+            if (ToolNumber.getIs() || i == 0) {
                 chord = Theory.getChord(accents[i].tone, accents[i].isMajor);
                 _chords.add(TickChord.get(chord, i * step, step));
             }
