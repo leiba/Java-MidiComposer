@@ -24,7 +24,7 @@ abstract public class APosition
     {
         int shift;
         int step = size / accents.length;
-        int tick = step / ((isTriplet ? 3 : 4) * ToolNumber.getRandom(2, 4));
+        int tick = step / ((isTriplet ? 3 : 4) * ToolNumber.getRandom(4, 5));
         ArrayList<Position> positions = new ArrayList<>();
 
         for (int i = 0; i < accents.length; i++) {

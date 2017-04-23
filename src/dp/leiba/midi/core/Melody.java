@@ -59,20 +59,20 @@ public class Melody
         _isMajor   = Theory.getIsMajor();
 
         int size = Midi.SIZE_TACT * 4;
-        int accts = 4;
+        int accts = 8;
         Accent[] accents = Theory.getAccents(_tone, _isMajor, accts);
         ArrayList<TickChord> chords = new ChordSyncope(_tone, _isMajor, accents, size).get();
         ArrayList<TickBass> bass = new BassBeat(_tone, _isMajor, accents, size).get();
-        ArrayList<TickLead> leads = new LeadLine(_tone, _isMajor, accents, size).get();
+        ArrayList<TickLead> leads = new LeadLine(_tone, _isMajor, accents, size, false).get();
 
         for (TickChord chord : chords) {
             for (int tone : chord.tones) {
-                //_midi.play(tone, chord.position, chord.ticks);
+                _midi.play(tone, chord.position, chord.ticks);
             }
         }
 
         for (TickBass bs : bass) {
-            //_midi.play(bs.tone, bs.position, bs.ticks);
+            _midi.play(bs.tone, bs.position, bs.ticks);
         }
 
         for (TickLead lead : leads) {

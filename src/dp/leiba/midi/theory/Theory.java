@@ -10,6 +10,7 @@ public class Theory
 
     public static final int OCTAVES             = 10;
     public static final int TONES               = 12;
+    public static final int HARMONIES           = 7;
 
     public static final int INTERVAL_UNISON     = 0;  // Прима
     public static final int INTERVAL_SECOND     = 2;  // Секунда
@@ -152,6 +153,40 @@ public class Theory
     {
         int[] harmony = getHarmony(tone, isMajor);
         return harmony[ToolNumber.getRandom(harmony.length - 1)];
+    }
+
+    /**
+     * Get tone near.
+     *
+     * @param tone    Tone.
+     * @param isMajor Is major.
+     * @param toneNow Accent.
+     * @param shift   Shift.
+     *
+     * @return Tone.
+     */
+    public static int getToneNear(int tone, boolean isMajor, int toneNow, int shift)
+    {
+        int position  = tone;
+        int[] harmony = getHarmony(tone, isMajor);
+
+        for (int i = 0; i < harmony.length; i++) {
+            if (harmony[i] == toneNow) {
+                position = i + shift;
+            }
+        }
+
+        while (position < 0) {
+            position  += HARMONIES;
+            tone      -= TONES;
+        }
+
+        while (position >= HARMONIES) {
+            position -= HARMONIES;
+            tone     += TONES;
+        }
+
+        return getHarmony(tone, isMajor)[position];
     }
 
     /**

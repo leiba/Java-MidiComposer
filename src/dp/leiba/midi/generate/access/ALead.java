@@ -20,12 +20,13 @@ abstract public class ALead extends APosition
     /**
      * Constructor.
      *
-     * @param tone    Tone.
-     * @param isMajor Is major.
-     * @param accents Accents.
-     * @param size    Size.
+     * @param tone      Tone.
+     * @param isMajor   Is major.
+     * @param accents   Accents.
+     * @param size      Size.
+     * @param isTriplet Is triplet.
      */
-    public ALead(int tone, boolean isMajor, Accent[] accents, int size)
+    public ALead(int tone, boolean isMajor, Accent[] accents, int size, boolean isTriplet)
     {
         _tones  = new ArrayList<>();
     }
