@@ -3,6 +3,8 @@ package dp.leiba.midi.generate;
 /**
  * ABass.
  */
-public class ABass
+abstract public class ABass
 {
+
+
 }

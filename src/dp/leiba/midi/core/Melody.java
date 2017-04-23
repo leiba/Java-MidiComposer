@@ -1,5 +1,6 @@
 package dp.leiba.midi.core;
 
+import dp.leiba.midi.theory.Theory;
 import dp.leiba.midi.tool.ToolNumber;
 
 /**

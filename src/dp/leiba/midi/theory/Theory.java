@@ -1,4 +1,4 @@
-package dp.leiba.midi.core;
+package dp.leiba.midi.theory;
 
 import dp.leiba.midi.tool.ToolNumber;
 
@@ -60,6 +60,31 @@ public class Theory
     public static boolean getIsTriplet()
     {
         return ToolNumber.getIs();
+    }
+
+    /**
+     * Get accents.
+     *
+     * @param tone    Tone.
+     * @param isMajor Is major.
+     * @param size    Size.
+     *
+     * @return Accents.
+     */
+    public static Accent[] getAccents(int tone, boolean isMajor, int size)
+    {
+        int[] chord;
+        int i = 0;
+        Accent[] accents = new Accent[size];
+
+        accents[i] = Accent.get(tone, isMajor);
+
+        while (++i < size) {
+            chord      = getChordRandom(tone, isMajor);
+            accents[i] = Accent.get(chord[0], (chord[1] - chord[0]) == INTERVAL_THIRD);
+        }
+
+        return accents;
     }
 
     /**
@@ -164,5 +189,28 @@ public class Theory
             tone + INTERVAL_THIRD + interval,
             tone + INTERVAL_FIFTH
         };
+    }
+
+    /**
+     * Get chord random.
+     *
+     * @param tone    Tone.
+     * @param isMajor Is major.
+     *
+     * @return Chord.
+     */
+    public static int[] getChordRandom(int tone, boolean isMajor)
+    {
+        int interval;
+        int[] chord   = null;
+        int[] harmony = getHarmony(tone, isMajor);
+        int[] chords  = getHarmonyChord(isMajor);
+
+        while (chord == null) {
+            interval = ToolNumber.getRandom(harmony.length - 1);
+            chord    = Theory.getChord(harmony[interval], chords[interval]);
+        }
+
+        return chord;
     }
 }

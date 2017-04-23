@@ -1,11 +1,6 @@
 package dp.leiba.midi;
 
 import dp.leiba.midi.core.Melody;
-import dp.leiba.midi.core.Midi;
-import dp.leiba.midi.core.Theory;
-
-import javax.sound.midi.*;
-import java.io.File;
 
 /**
  * Main.
