@@ -4,6 +4,7 @@ import dp.leiba.midi.generate.AChord;
 import dp.leiba.midi.generate.tick.TickChord;
 import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.theory.Theory;
+import dp.leiba.midi.tool.ToolNumber;
 
 /**
  * ChordAccent.
@@ -23,11 +24,17 @@ public class ChordAccent extends AChord
         super(tone, isMajor, accents, size);
 
         int[] chord;
-        int step = size / accents.length;
+        int step  = size / accents.length;
+        int shift = step / 2;
 
         for (int i = 0; i < accents.length; i++) {
             chord = Theory.getChord(accents[i].tone, accents[i].isMajor);
-            _chords[(i++) * step] = TickChord.get(chord, step);
+            _chords[(i++) * step] = TickChord.get(chord, shift);
+
+            if (ToolNumber.getIs()) {
+                chord = Theory.getChordRandom(tone, isMajor);
+                _chords[i * step - shift] = TickChord.get(chord, shift);
+            }
         }
     }
 }
