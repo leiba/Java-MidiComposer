@@ -5,9 +5,9 @@ import dp.leiba.midi.generate.tick.TickBass;
 import dp.leiba.midi.theory.Accent;
 
 /**
- * BassBeat.
+ * BassRepeat.
  */
-public class BassBeat extends ABass
+public class BassRepeat extends ABass
 {
 
     /**
@@ -18,14 +18,17 @@ public class BassBeat extends ABass
      * @param accents Accents.
      * @param size    Size.
      */
-    public BassBeat(int tone, boolean isMajor, Accent[] accents, int size)
+    public BassRepeat(int tone, boolean isMajor, Accent[] accents, int size)
     {
         super(tone, isMajor, accents, size);
 
-        int step = size / accents.length;
+        int step  = size / accents.length;
+        int shift = step / 4;
 
         for (int i = 0; i < accents.length; i++) {
-            _tones.add(TickBass.get(accents[i].tone, i * step, step));
+            for (int j = 0; j < 4; j++) {
+                _tones.add(TickBass.get(accents[i].tone, i * step + (j * shift), shift));
+            }
         }
     }
 }

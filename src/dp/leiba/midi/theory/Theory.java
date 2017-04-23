@@ -141,6 +141,20 @@ public class Theory
     }
 
     /**
+     * Get tone random.
+     *
+     * @param tone    Tone.
+     * @param isMajor Is major.
+     *
+     * @return Tone.
+     */
+    public static int getToneRandom(int tone, boolean isMajor)
+    {
+        int[] harmony = getHarmony(tone, isMajor);
+        return harmony[ToolNumber.getRandom(harmony.length - 1)];
+    }
+
+    /**
      * Get chord.
      *
      * @param tone Tone.

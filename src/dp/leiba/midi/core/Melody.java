@@ -1,9 +1,11 @@
 package dp.leiba.midi.core;
 
+import dp.leiba.midi.generate.bass.*;
 import dp.leiba.midi.generate.chord.ChordAccent;
 import dp.leiba.midi.generate.chord.ChordBeat;
 import dp.leiba.midi.generate.chord.ChordPass;
 import dp.leiba.midi.generate.chord.ChordSyncope;
+import dp.leiba.midi.generate.tick.TickBass;
 import dp.leiba.midi.generate.tick.TickChord;
 import dp.leiba.midi.theory.Accent;
 import dp.leiba.midi.theory.Theory;
@@ -58,11 +60,16 @@ public class Melody
         int accts = 4;
         Accent[] accents = Theory.getAccents(_tone, _isMajor, accts);
         ArrayList<TickChord> chords = new ChordSyncope(_tone, _isMajor, accents, size).get();
+        ArrayList<TickBass> bass = new BassBeat(_tone, _isMajor, accents, size).get();
 
         for (TickChord chord : chords) {
             for (int tone : chord.tones) {
                 _midi.play(tone, chord.position, chord.ticks);
             }
+        }
+
+        for (TickBass bs : bass) {
+            _midi.play(bs.tone, bs.position, bs.ticks);
         }
 
         //_midi.play(55, 0, Midi.SIZE_BEAT);

@@ -1,15 +1,17 @@
 package dp.leiba.midi.generate.tick;
 
+import dp.leiba.midi.theory.Theory;
+
 /**
- * TickChord.
+ * TickBass.
  */
-public class TickChord
+public class TickBass
 {
 
     /**
-     * Tones.
+     * Tone.
      */
-    public int[] tones;
+    public int tone;
 
     /**
      * Position.
@@ -24,13 +26,13 @@ public class TickChord
     /**
      * Constructor.
      *
-     * @param tones    Tones.
+     * @param tone     Tone.
      * @param position Position.
      * @param ticks    Ticks.
      */
-    public TickChord(int[] tones, int position, int ticks)
+    public TickBass(int tone, int position, int ticks)
     {
-        this.tones    = tones;
+        this.tone     = tone - Theory.TONES;
         this.position = position;
         this.ticks    = ticks;
     }
@@ -38,14 +40,14 @@ public class TickChord
     /**
      * Get object.
      *
-     * @param tones    Tones.
+     * @param tone     Tone.
      * @param position Position.
      * @param ticks    Ticks.
      *
      * @return TickChord.
      */
-    public static TickChord get(int[] tones, int position, int ticks)
+    public static TickBass get(int tone, int position, int ticks)
     {
-        return new TickChord(tones, position, ticks);
+        return new TickBass(tone, position, ticks);
     }
 }
